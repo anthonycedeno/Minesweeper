@@ -3,14 +3,10 @@ import java.awt.Component;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Random;
 
 import javax.swing.JFrame;
 
 public class MyMouseAdapter extends MouseAdapter {
-	
-	
-	private Random generator = new Random();
 	public void mousePressed(MouseEvent e) {
 		
 		switch (e.getButton()) {
@@ -65,6 +61,7 @@ public class MyMouseAdapter extends MouseAdapter {
 			int y = e.getY();
 			myPanel.x = x;
 			myPanel.y = y;
+			
 			int gridX = myPanel.getGridX(x, y);
 			int gridY = myPanel.getGridY(x, y);
 			if ((myPanel.mouseDownGridX == -1) || (myPanel.mouseDownGridY == -1)) {
@@ -79,31 +76,39 @@ public class MyMouseAdapter extends MouseAdapter {
 						//Released the mouse button on a different cell where it was pressed
 						//Do nothing
 					} else {
-						//Released the mouse button on the same cell where it was pressed
-						if ((gridX == myPanel.bombGenX[x]) && (gridY == myPanel.bombGenY[y])) {
-							//On the bomb cell... do nothing
-//							JFrame gameOver = new JFrame("Game Over =(");
-//							gameOver.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//							gameOver.setLocation(500, 200);
-//							gameOver.setSize(400, 200);
-//
-//							
-//							gameOver.setVisible(true);
-							
-						} else {
-							//On the grid other than on the left column and on the top row:
-							
-							
+						//Released the mouse button on bomb
+						for (int i = 0; i <myPanel.numBombs ; i++){
+							if( (gridX == myPanel.bombGenX[i]) && (gridY == myPanel.bombGenY[i])){
+
+							}	//	click in grid, not bomb
+							else{
+								
+								
+							}
+
 
 							
-						}
+							
+						}//put code here
+							myPanel.colorArray[gridX][gridY] = Color.red;
+							myPanel.repaint();
+	
+							JFrame gameOver = new JFrame("Game Over =(");
+							gameOver.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+							gameOver.setLocation(800, 150);
+							gameOver.setSize(400, 400);
+							gameOver.setBackground(Color.red);
+							gameOver.setVisible(true);
+
 					}
+					//put code here
 				}
 			}
 			myPanel.repaint();
 			break;
 		case 3:		//Right mouse button
 			//Do nothing
+
 			break;
 		default:    //Some other button (2 = Middle mouse button, etc.)
 			//Do nothing

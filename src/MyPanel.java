@@ -17,8 +17,14 @@ public class MyPanel extends JPanel {
 	public int mouseDownGridX = 0;
 	public int mouseDownGridY = 0;
 	public int numBombs = 10;
-	public  int bombGenX[] =new int[10];
-	public  int bombGenY[] = new int [10];
+	public  int bombGen[][] = new int[10][10];
+	public int bombGenX[] = new int[10];
+	public int bombGenY[] = new int[10];
+	public int neghbours = 0;
+	
+	public int[][] neighbours = new int [10][10];
+	public boolean revealed[][] = new boolean[10][10];
+	public boolean flaged[][] = new boolean[10][10];
 	public boolean minesOnField[][] = new boolean[TOTAL_COLUMNS][TOTAL_ROWS];
 	public String[][] nearBombs = new String[TOTAL_COLUMNS][TOTAL_ROWS];
 	
