@@ -71,9 +71,9 @@ public class MyPanel extends JPanel {
 			else{
 				i--;
 			}
-			bombGenX[i] = bombGenX[x];
-			bombGenY[i] = bombGenY[y];
-			colorArray[x][y] = Color.GREEN;
+			bombGenX[i] = x;
+			bombGenY[i] = y;
+			colorArray[x][y] = Color.black;
 			
 			
 		}
