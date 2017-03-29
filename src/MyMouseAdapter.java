@@ -99,12 +99,12 @@ public class MyMouseAdapter extends MouseAdapter {
 					} else {
 						//Released the mouse button on bomb
 						for (int i = 0; i <myPanel.numBombs ; i++){
-							for (int j = 0 ; j < myPanel.numBombs; j ++){
+
 
 								int rx = i+1;
 								int lx = i-1;
-								int ty = j+1;
-								int by = j-1;
+								int ty = i+1;
+								int by = i-1;
 								int nearBombs = 0;
 								if( (gridX == myPanel.bombGenX[i]) && (gridY == myPanel.bombGenY[i])){
 
@@ -118,16 +118,25 @@ public class MyMouseAdapter extends MouseAdapter {
 									gameOver.setVisible(true);								
 								}	
 								else{
-									if (rx >=0 && by >=0 && myPanel.minesOnField[rx][by]) nearBombs++;
+//									if (rx >=0 && by >=0 && myPanel.minesOnField[rx][by]) nearBombs++;
+//									if ( rx >= 0 && myPanel.minesOnField[rx][j]) nearBombs++;
+//									if (rx >=0 && ty < myPanel.numBombs && myPanel.minesOnField[lx][ty]) nearBombs++;
+//
+//									if ( by >= 0 && myPanel.minesOnField[i][by]) nearBombs++;	
+//									if ( ty < myPanel.numBombs && myPanel.minesOnField[i][ty]) nearBombs++;
+									
+									
+									
 
-								}
-								myPanel.colorArray[myPanel.bombGenX[i]][myPanel.bombGenY[i]] = Color.blue;
-								myPanel.repaint();
+								
+
 
 
 							//	click in grid, not bomb
 								
-							}
+							}	
+								myPanel.colorArray[myPanel.bombGenX[i]][myPanel.bombGenY[i]] = Color.blue;
+								myPanel.repaint();
 						}    //put code here
 
 

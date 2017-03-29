@@ -16,7 +16,7 @@ public class MyPanel extends JPanel {
 	public int y = -1;
 	public int mouseDownGridX = 0;
 	public int mouseDownGridY = 0;
-	public int numBombs = 10;
+	public int numBombs = 9;
 	public  int bombGen[][] = new int[10][10];
 	public int bombGenX[] = new int[10];
 	public int bombGenY[] = new int[10];
