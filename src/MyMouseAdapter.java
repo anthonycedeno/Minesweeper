@@ -118,12 +118,12 @@ public class MyMouseAdapter extends MouseAdapter {
 									gameOver.setVisible(true);								
 								}	
 								else{
-//									if (rx >=0 && by >=0 && myPanel.minesOnField[rx][by]) nearBombs++;
-//									if ( rx >= 0 && myPanel.minesOnField[rx][j]) nearBombs++;
-//									if (rx >=0 && ty < myPanel.numBombs && myPanel.minesOnField[lx][ty]) nearBombs++;
+//									if (rx >=0 && by >=0 && myPanel.minesOnField[rx][by] == true) nearBombs++;
+//									if ( rx >= 0 && myPanel.minesOnField[rx][i] == true) nearBombs++;
+//									if (rx >=0 && ty < myPanel.numBombs && myPanel.minesOnField[lx][ty] == true) nearBombs++;
 //
-//									if ( by >= 0 && myPanel.minesOnField[i][by]) nearBombs++;	
-//									if ( ty < myPanel.numBombs && myPanel.minesOnField[i][ty]) nearBombs++;
+//									if ( by >= 0 && myPanel.minesOnField[i][by] == true) nearBombs++;	
+//									if ( ty < myPanel.numBombs && myPanel.minesOnField[i][ty] == true) nearBombs++;
 									
 									
 									
@@ -172,6 +172,7 @@ public class MyMouseAdapter extends MouseAdapter {
 			
 			int gridXR = myPanelR.getGridX(xR, yR);
 			int gridYR = myPanelR.getGridY(xR, yR);
+			Random generator = new Random();
 			if ((myPanelR.mouseDownGridX == -1) || (myPanelR.mouseDownGridY == -1)) {
 				//Had pressed outside
 				//Do nothing
@@ -185,22 +186,24 @@ public class MyMouseAdapter extends MouseAdapter {
 						//Do nothing
 					} else {
 						//Released the mouse button on bomb
-						for (int i = 0; i <myPanelR.numBombs ; i++){
-							if( (gridXR == myPanelR.bombGenX[i]) && (gridYR == myPanelR.bombGenY[i])){
-								
+						Color newColor = null;
+						do { 
+							switch (generator.nextInt(2)){
+							case 0 :
+								newColor = Color.red;
+								break;
+							case 1 :
+								newColor = Color.white;
+								break;
 							}
-							//	click in grid, not bomb
-							
-							else{	
-								
-							}	
-							
-							myPanelR.colorArray[gridXR][gridYR] = Color.red;
+							}while ( myPanelR.colorArray[myPanelR.mouseDownGridX][myPanelR.mouseDownGridY].equals(newColor));
+							myPanelR.colorArray[myPanelR.mouseDownGridX][myPanelR.mouseDownGridY] = newColor;
+			
 							myPanelR.repaint();
 						}//put code here
 
 
-					}
+					
 					//put code here
 					
 				}
